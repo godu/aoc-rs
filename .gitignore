@@ -1,0 +1,18 @@
+# Rust
+/target/
+**/target/
+Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# AoC inputs (personal, don't commit)
+inputs/*.txt
+
+# OS
+.DS_Store
+Thumbs.db
