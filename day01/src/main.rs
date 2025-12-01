@@ -1,3 +1,5 @@
+use std::iter::once;
+
 use common::*;
 use nom::{
     IResult, Parser,
@@ -30,19 +32,41 @@ fn part1(input: &str) -> usize {
     moves
         .iter()
         .map(|m| match m {
-            Move::Left(n) => 100 - *n,
+            Move::Left(n) => -*n,
             Move::Right(n) => *n,
         })
         .scan(50, |acc, x| {
-            *acc = (*acc + x) % 100;
+            *acc += x;
             Some(*acc)
         })
-        .filter(|x| *x == 0)
+        .filter(|x| x.rem_euclid(100) == 0)
         .count()
 }
 
-fn part2(_input: &str) -> usize {
-    todo!()
+fn part2(input: &str) -> usize {
+    let (_, moves) = moves_parser(input).unwrap();
+
+    once(50isize)
+        .chain(
+            moves
+                .iter()
+                .map(|m| match m {
+                    Move::Left(n) => -*n,
+                    Move::Right(n) => *n,
+                })
+                .scan(50, |acc, x| {
+                    *acc += x;
+                    Some(*acc)
+                }),
+        )
+        .tuple_windows::<(isize, isize)>()
+        .map(|(a, b)| {
+            let (lo, hi) = if a < b { (a, b) } else { (b, a) };
+            let in_between = (hi - 1).div_euclid(100) - lo.div_euclid(100);
+            let lands_on = if b.rem_euclid(100) == 0 { 1 } else { 0 };
+            (in_between + lands_on) as usize
+        })
+        .sum()
 }
 
 fn main() {
@@ -72,8 +96,8 @@ L82
         assert_eq!(part1(EXAMPLE), 3);
     }
 
-    // #[test]
-    // fn test_part2() {
-    //     assert_eq!(part2(EXAMPLE), 0);
-    // }
+    #[test]
+    fn test_part2() {
+        assert_eq!(part2(EXAMPLE), 6);
+    }
 }
