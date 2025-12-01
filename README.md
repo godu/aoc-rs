@@ -31,6 +31,11 @@ cargo fmt --all
 
 # Run clippy
 cargo clippy --workspace
+
+# Watch mode (requires: cargo install cargo-watch)
+cargo watch -c -x 'run -p day01'           # Watch and run
+cargo watch -c -x 'test -p day01'          # Watch and test
+cargo watch -c -x 'test --workspace'       # Watch all tests
 ```
 
 ## Adding a New Day
