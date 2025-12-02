@@ -6,6 +6,7 @@ edition.workspace = true
 [dependencies]
 common = { path = "../common" }
 nom.workspace = true
+alga = "0.9"
 
 [dev-dependencies]
 criterion.workspace = true
