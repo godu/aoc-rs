@@ -1,0 +1,9 @@
+[package]
+name = "day05"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+common = { path = "../common" }
+nom.workspace = true
+alga.workspace = true
