@@ -2,12 +2,3 @@
 name = "common"
 version.workspace = true
 edition.workspace = true
-
-[dependencies]
-itertools.workspace = true
-regex.workspace = true
-nom.workspace = true
-petgraph.workspace = true
-pathfinding.workspace = true
-rayon.workspace = true
-ndarray.workspace = true

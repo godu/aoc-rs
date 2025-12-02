@@ -2,7 +2,7 @@ use alga::general::{
     AbstractGroup, AbstractLoop, AbstractMagma, AbstractMonoid, AbstractQuasigroup,
     AbstractSemigroup, Additive, Identity, TwoSidedInverse,
 };
-use common::*;
+use common::read_input;
 use nom::{
     IResult, Parser,
     branch::alt,

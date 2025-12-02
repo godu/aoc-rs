@@ -7,11 +7,5 @@ version = "0.1.0"
 edition = "2024"
 
 [workspace.dependencies]
-itertools = "0.14"
-regex = "1"
 nom = "8"
-petgraph = "0.7"
-pathfinding = "4"
-rayon = "1.10"
-ndarray = "0.16"
-criterion = "0.5"
+alga = "0.9"

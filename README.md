@@ -23,9 +23,6 @@ cargo test -p day01
 # Run all tests
 cargo test --workspace
 
-# Run benchmarks
-cargo bench -p day01
-
 # Check formatting
 cargo fmt --all
 
@@ -50,15 +47,8 @@ edition.workspace = true
 [dependencies]
 common = { path = "../common" }
 
-[dev-dependencies]
-criterion.workspace = true
-
-[[bench]]
-name = "bench"
-harness = false
 ```
 
 2. Create `dayXX/src/main.rs` with solution
-3. Create `dayXX/benches/bench.rs` for benchmarks
-4. Add `"dayXX"` to workspace members in root `Cargo.toml`
-5. Add input to `inputs/dayXX.txt`
+3. Add `"dayXX"` to workspace members in root `Cargo.toml`
+4. Add input to `inputs/dayXX.txt`
