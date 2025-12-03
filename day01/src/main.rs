@@ -6,7 +6,7 @@ use common::read_input;
 use nom::{
     IResult, Parser,
     branch::alt,
-    character::complete::{char, newline, u32},
+    character::complete::{char, i32, newline},
     combinator::map,
     multi::separated_list1,
     sequence::preceded,
@@ -131,8 +131,8 @@ fn trajectory(
 
 fn rotation_parser(input: &str) -> IResult<&str, Rotation> {
     alt((
-        map(preceded(char('L'), u32), |n| Rotation::Left(n as isize)),
-        map(preceded(char('R'), u32), |n| Rotation::Right(n as isize)),
+        map(preceded(char('L'), i32), |n| Rotation::Left(n as isize)),
+        map(preceded(char('R'), i32), |n| Rotation::Right(n as isize)),
     ))
     .parse(input)
 }
